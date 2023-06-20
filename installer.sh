@@ -2,6 +2,7 @@
 
 CHANNEL="stable"
 BRANCH="stable"
+VERSION="4.22.1"
 NAME="PocketMine-MP"
 BUILD_URL=""
 
@@ -207,7 +208,6 @@ rm -f "$NAME.phar"
 rm -f README.md
 rm -f CONTRIBUTING.md
 rm -f LICENSE
-rm -f start.sh
 rm -f start.bat
 
 #Old installations
@@ -224,14 +224,14 @@ if ! [ -s "$NAME.phar" ] || [ "$(head -n 1 $NAME.phar)" == '<!DOCTYPE html>' ]; 
 	exit 1
 else
 	if [ "$CHANNEL" == "soft" ]; then
-		download_file "https://raw.githubusercontent.com/PocketMine/PocketMine-Soft/${BRANCH}/resources/start.sh" > start.sh
+		download_file "https://raw.githubusercontent.com/PocketMine/PocketMine-Soft/${VERSION}/resources/start.sh" > start.sh
 	else
-		download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${BRANCH}/start.sh" > start.sh
+		download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${VERSION}/start.sh" > start.sh
 	fi
-	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${BRANCH}/LICENSE" > LICENSE
-	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${BRANCH}/README.md" > README.md
-	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${BRANCH}/CONTRIBUTING.md" > CONTRIBUTING.md
-	download_file "https://raw.githubusercontent.com/pmmp/php-build-scripts/${BRANCH}/compile.sh" > compile.sh
+	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${VERSION}/LICENSE" > LICENSE
+	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${VERSION}/README.md" > README.md
+	download_file "https://raw.githubusercontent.com/pmmp/PocketMine-MP/${VERSION}/CONTRIBUTING.md" > CONTRIBUTING.md
+	download_file "https://raw.githubusercontent.com/pmmp/php-build-scripts/${VERSION}/compile.sh" > compile.sh
 fi
 
 chmod +x compile.sh
@@ -274,7 +274,7 @@ else
 		fi
 
 		echo -n "... downloading $PHP_VERSION ..."
-		download_file "https://github.com/pmmp/PHP-Binaries/releases/download/php-$PHP_VERSION-latest/PHP-$PLATFORM-PM$PM_VERSION_MAJOR.tar.gz" | tar -zx > /dev/null 2>&1
+		download_file "https://github.com/pmmp/PHP-Binaries/releases/download/php-$PHP_VERSION-latest/PHP-$PLATFORM-PM4.tar.gz" | tar -zx > /dev/null 2>&1
 
 		chmod +x ./bin/php7/bin/*
 		if [ -f ./bin/composer ]; then
@@ -319,5 +319,7 @@ fi
 
 rm compile.sh
 
-echo "[*] Everything done! Run ./start.sh to start $NAME"
+echo "php8.1をインストールしました。"
+echo "pocketMine-mp本体を最新のmp4に置換してから起動してください。"
+echo "現在インストールされたPMMPのバージョンは{$VERSION}です。"
 exit 0
